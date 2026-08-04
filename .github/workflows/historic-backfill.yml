@@ -1,0 +1,71 @@
+name: Historic backfill
+
+# Manual only — this is a one-time bootstrap (or a deliberate re-run), not a
+# schedule. History doesn't change once it's been published, so there's
+# nothing for a cron to do here day to day.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this data repo
+        uses: actions/checkout@v4
+        with:
+          path: store
+
+      - name: Check out the pipeline code
+        uses: actions/checkout@v4
+        with:
+          repository: malavikasmenon/open-indian-fund-data
+          path: pipeline
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pipeline dependencies
+        run: pip install -r pipeline/requirements.txt
+
+      # Same CWD/PYTHONPATH split as update-data.yml — see that file for why.
+      - name: Backfill full NAV history for every scheme
+        working-directory: store
+        env:
+          PYTHONPATH: ${{ github.workspace }}/pipeline
+        run: python -m scripts.run_historic_backfill
+
+      - name: Commit and push
+        id: commit
+        working-directory: store
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Historic backfill: $(date -u +%Y-%m-%d)"
+            git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # See update-data.yml for why only these four files, not the whole
+      # nav/ tree, need purging.
+      - name: Purge jsDelivr cache for the files that changed
+        if: steps.commit.outputs.pushed == 'true'
+        run: |
+          curl -s -X POST https://purge.jsdelivr.net/ \
+            -H "Content-Type: application/json" \
+            -d '{
+              "path": [
+                "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/manifest.json",
+                "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/schemes/schemes.parquet",
+                "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/schemes.ingest.json",
+                "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/nav.ingest.json"
+              ]
+            }'
