@@ -21,7 +21,7 @@ jobs:
       - name: Check out the pipeline code
         uses: actions/checkout@v4
         with:
-          repository: malavikasmenon/open-indian-fund-data
+          repository: malavikasmenon/india-mf-explorer-web
           path: pipeline
 
       - uses: actions/setup-python@v5
