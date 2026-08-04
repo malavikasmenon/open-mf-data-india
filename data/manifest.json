@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T19:57:19.657207+00:00",
+  "generated_at": "2026-08-04T19:59:11.596409+00:00",
   "tables": [
     {
       "name": "nav",
@@ -12,7 +12,7 @@
         "scheme_code",
         "nav_date"
       ],
-      "row_count": 21612582,
+      "row_count": 21612587,
       "columns": [
         {
           "name": "date",
@@ -282,14 +282,15 @@
         "nav/year=2026/month=05/history.parquet",
         "nav/year=2026/month=06/history.parquet",
         "nav/year=2026/month=07/history.parquet",
+        "nav/year=2026/month=08/2026-08-04.parquet",
         "nav/year=2026/month=08/history.parquet"
       ],
-      "bytes": 167866071,
+      "bytes": 167868334,
       "source": {
         "name": "mfapi",
         "url": "https://api.mfapi.in",
         "endpoints": [
-          "/mf/{scheme_code}"
+          "/mf/latest"
         ]
       }
     },
