@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T19:46:28.243864+00:00",
+  "generated_at": "2026-08-04T19:51:48.627231+00:00",
   "tables": [
     {
       "name": "nav",
@@ -12,7 +12,7 @@
         "scheme_code",
         "nav_date"
       ],
-      "row_count": 21500702,
+      "row_count": 21612582,
       "columns": [
         {
           "name": "date",
@@ -284,7 +284,7 @@
         "nav/year=2026/month=07/history.parquet",
         "nav/year=2026/month=08/history.parquet"
       ],
-      "bytes": 167012247,
+      "bytes": 167866071,
       "source": {
         "name": "mfapi",
         "url": "https://api.mfapi.in",
