@@ -1,0 +1,10 @@
+{
+  "source": {
+    "name": "mfapi",
+    "url": "https://api.mfapi.in",
+    "endpoints": [
+      "/mf/{scheme_code}"
+    ]
+  },
+  "retrieved_at": "2026-08-04T19:46:28.197456+00:00"
+}
