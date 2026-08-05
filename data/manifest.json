@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T19:59:11.596409+00:00",
+  "generated_at": "2026-08-05T08:00:06.194700+00:00",
   "tables": [
     {
       "name": "nav",
@@ -387,7 +387,7 @@
       "files": [
         "schemes/schemes.parquet"
       ],
-      "bytes": 437614,
+      "bytes": 437379,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/spages/NAVAll.txt"
