@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T08:00:06.194700+00:00",
+  "generated_at": "2026-08-06T07:59:28.673022+00:00",
   "tables": [
     {
       "name": "nav",
@@ -325,7 +325,7 @@
       "primary_key": [
         "scheme_code"
       ],
-      "row_count": 14237,
+      "row_count": 14241,
       "columns": [
         {
           "name": "scheme_code",
@@ -387,7 +387,7 @@
       "files": [
         "schemes/schemes.parquet"
       ],
-      "bytes": 437379,
+      "bytes": 437491,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/spages/NAVAll.txt"
