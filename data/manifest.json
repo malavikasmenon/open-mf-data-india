@@ -1,6 +1,64 @@
 {
-  "generated_at": "2026-08-06T11:04:37.808469+00:00",
+  "generated_at": "2026-08-07T06:29:57.009383+00:00",
   "tables": [
+    {
+      "name": "aum",
+      "title": "AUM",
+      "subtitle": "Average assets under management for every scheme, by quarter.",
+      "grain": "One row per scheme per quarter.",
+      "description": "Scheme-wise Average AUM (AAUM), as AMFI publishes it each quarter. Figures are in Rs Lakhs, exactly as published - not converted to rupees or crores. AMFI's own field names call this 'for the month', but the figure is the quarter's average, not a monthly one. period is kept verbatim as AMFI prints it (e.g. 'April - June 2026') rather than parsed into dates. Join to schemes on scheme_code - though unlike nav, that join is not guaranteed to match: schemes is a current snapshot of NAVAll.txt, so a scheme that closed or matured after the quarter a row covers can appear here with no corresponding row in schemes.",
+      "examples": [],
+      "primary_key": [
+        "scheme_code",
+        "period"
+      ],
+      "row_count": 8545,
+      "columns": [
+        {
+          "name": "scheme_code",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": true,
+          "description": "AMFI's scheme identifier, and the join key to schemes.",
+          "source_field": "average-aum-schemewise AMFI_Code"
+        },
+        {
+          "name": "period",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": true,
+          "description": "The quarter this figure averages over, exactly as AMFI prints it (e.g. 'April - June 2026') - not parsed into a date.",
+          "source_field": "average-aum-schemewise period"
+        },
+        {
+          "name": "aum_excl_fof_domestic_incl_fof_overseas",
+          "type": "DOUBLE",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Average AUM for the quarter, Rs Lakhs. Excludes domestic fund-of-funds assets but includes overseas fund-of-funds assets, per AMFI's own split.",
+          "source_field": "average-aum-schemewise AverageAumForTheMonth.ExcludingFundOfFundsDomesticButIncludingFundOfFundsOverseas"
+        },
+        {
+          "name": "aum_fof_domestic",
+          "type": "DOUBLE",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Average AUM for the quarter from domestic fund-of-funds assets, Rs Lakhs.",
+          "source_field": "average-aum-schemewise AverageAumForTheMonth.FundOfFundsDomestic"
+        }
+      ],
+      "files": [
+        "aum/year=2026/2026-04.parquet"
+      ],
+      "bytes": 117327,
+      "source": {
+        "name": "AMFI",
+        "url": "https://www.amfiindia.com/aum-data/average-aum",
+        "endpoints": [
+          "/api/average-aum-schemewise"
+        ]
+      }
+    },
     {
       "name": "nav",
       "title": "NAV",

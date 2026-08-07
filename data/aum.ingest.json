@@ -1,0 +1,10 @@
+{
+  "source": {
+    "name": "AMFI",
+    "url": "https://www.amfiindia.com/aum-data/average-aum",
+    "endpoints": [
+      "/api/average-aum-schemewise"
+    ]
+  },
+  "retrieved_at": "2026-08-07T06:29:56.980433+00:00"
+}
