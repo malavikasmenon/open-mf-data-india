@@ -41,7 +41,7 @@ jobs:
       # the tracked, full-history store rather than a throwaway directory —
       # that's also what lets build_manifest() see the complete dataset
       # (all past nav files, not just today's) rather than an empty one.
-      - name: Fetch schemes, append today's NAV, rebuild the manifest
+      - name: Fetch schemes, append today's NAV, refresh TER, rebuild the manifest
         working-directory: store
         env:
           PYTHONPATH: ${{ github.workspace }}/pipeline
@@ -63,21 +63,36 @@ jobs:
             echo "pushed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      # Only the files that get overwritten at the same URL need purging —
-      # manifest.json and schemes.parquet are rewritten daily, so a stale
-      # CDN cache would hide new schemes and today's new nav file from the
-      # browser. The hundreds of nav/*.parquet files are never purged: each
-      # day's file is a brand-new URL nothing has cached yet.
+      # manifest.json, schemes.parquet, schemes.ingest.json, nav.ingest.json
+      # and ter.ingest.json all sit at fixed paths rewritten every run, so a
+      # stale CDN cache would hide new schemes/TER metadata from the
+      # browser. nav/*.parquet is never purged: each day's file is a
+      # brand-new URL nothing has cached yet - same reasoning covers ter's
+      # *compacted* monthly/yearly files. But ter's *current-month* daily
+      # files are different from nav's: build_ter() re-fetches and
+      # overwrites every day published so far each run (see
+      # pipelines/ter.py in the pipeline repo - there is no day-level
+      # filter on the source, so it re-derives the whole month rather than
+      # just today), so those specific files are overwritten in place, not
+      # freshly created, and do need purging - read from what this run's
+      # commit actually touched, since which files that is moves daily.
       - name: Purge jsDelivr cache for the files that changed
         if: steps.commit.outputs.pushed == 'true'
+        working-directory: store
         run: |
+          ter_files=$(git diff --name-only HEAD~1 HEAD | grep '^data/ter/.*\.parquet$' || true)
+          paths='[
+            "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/manifest.json",
+            "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/schemes/schemes.parquet",
+            "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/schemes.ingest.json",
+            "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/nav.ingest.json",
+            "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/ter.ingest.json"
+          ]'
+          if [ -n "$ter_files" ]; then
+            while IFS= read -r f; do
+              paths=$(echo "$paths" | jq --arg url "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/$f" '. + [$url]')
+            done <<< "$ter_files"
+          fi
           curl -s -X POST https://purge.jsdelivr.net/ \
             -H "Content-Type: application/json" \
-            -d '{
-              "path": [
-                "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/manifest.json",
-                "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/schemes/schemes.parquet",
-                "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/schemes.ingest.json",
-                "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/nav.ingest.json"
-              ]
-            }'
+            -d "{\"path\": $paths}"
