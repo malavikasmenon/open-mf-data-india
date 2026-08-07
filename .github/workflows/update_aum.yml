@@ -1,0 +1,80 @@
+name: Update AUM
+
+on:
+  schedule:
+    # 05:30 UTC = 11:00 IST, Mondays. AMFI publishes scheme-wise average AUM
+    # once a quarter, not daily, so a weekly check is frequent enough to
+    # pick up a newly published quarter within days - see run_weekly.py in
+    # the pipeline repo for why this isn't on update-data.yml's schedule.
+    - cron: '30 5 * * 1'
+  workflow_dispatch: {}
+
+# The default GITHUB_TOKEN only needs write access to *this* repo — that's
+# the whole reason this workflow lives in the data repo rather than the
+# pipeline repo. No cross-repo PAT to create or rotate.
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this data repo
+        uses: actions/checkout@v4
+        with:
+          path: store
+
+      - name: Check out the pipeline code
+        uses: actions/checkout@v4
+        with:
+          repository: malavikasmenon/india-mf-explorer-web
+          path: pipeline
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pipeline dependencies
+        run: pip install -r pipeline/requirements.txt
+
+      # Same CWD/PYTHONPATH split as update-data.yml — see that file for why.
+      - name: Refresh AUM, rebuild the manifest
+        working-directory: store
+        env:
+          PYTHONPATH: ${{ github.workspace }}/pipeline
+        run: python -m scripts.run_weekly
+
+      - name: Commit and push
+        id: commit
+        working-directory: store
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Weekly AUM update: $(date -u +%Y-%m-%d)"
+            git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # manifest.json and aum.ingest.json sit at fixed paths and are
+      # rewritten every run, like schemes.parquet in update-data.yml. But
+      # unlike nav's daily files, the *current* quarter's aum/*.parquet is
+      # also overwritten in place for as long as that quarter stays
+      # "latest" — and which file that is moves every quarter, so it's read
+      # from what this run's commit actually touched rather than hardcoded.
+      - name: Purge jsDelivr cache for the files that changed
+        if: steps.commit.outputs.pushed == 'true'
+        working-directory: store
+        run: |
+          aum_file=$(git diff --name-only HEAD~1 HEAD | grep '^data/aum/.*\.parquet$' | head -1 || true)
+          paths='["https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/manifest.json","https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/aum.ingest.json"]'
+          if [ -n "$aum_file" ]; then
+            paths=$(echo "$paths" | jq --arg url "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/$aum_file" '. + [$url]')
+          fi
+          curl -s -X POST https://purge.jsdelivr.net/ \
+            -H "Content-Type: application/json" \
+            -d "{\"path\": $paths}"
