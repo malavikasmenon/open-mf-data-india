@@ -1,0 +1,10 @@
+{
+  "source": {
+    "name": "AMFI",
+    "url": "https://www.amfiindia.com/ter-of-mf-schemes",
+    "endpoints": [
+      "/api/populate-te-rdata-revised"
+    ]
+  },
+  "retrieved_at": "2026-08-07T08:16:19.629189+00:00"
+}

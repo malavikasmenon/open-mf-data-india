@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T06:42:04.011609+00:00",
+  "generated_at": "2026-08-07T08:16:19.659735+00:00",
   "tables": [
     {
       "name": "aum",
@@ -232,6 +232,157 @@
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/spages/NAVAll.txt"
+      }
+    },
+    {
+      "name": "ter",
+      "title": "TER",
+      "subtitle": "Daily total expense ratio for every scheme AMFI discloses it for.",
+      "grain": "One row per scheme per day.",
+      "description": "Total Expense Ratio (TER), as AMFI publishes it daily, split into the Regular and Direct plan and further into its components: base expense ratio, brokerage cost, transaction cost and statutory levies, which sum to the headline *_ter figure. All values are annualized percentages.\n\nThis table stands alone - it cannot be joined to schemes, nav or aum. AMFI's TER disclosure identifies schemes by NSDLSchemeCode, an identifier from a different registry than the AMFI scheme_code the rest of this dataset is keyed on; the two share no common column, only free-text scheme names that are not reliable to match on. scheme_name/scheme_type/scheme_category are kept here verbatim rather than looked up elsewhere, since there is nothing to look them up against.",
+      "examples": [],
+      "primary_key": [
+        "nsdl_scheme_code",
+        "ter_date"
+      ],
+      "row_count": 9662,
+      "columns": [
+        {
+          "name": "nsdl_scheme_code",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": true,
+          "description": "NSDL's scheme identifier - not AMFI's scheme_code, and not joinable to it. The only identifier this source publishes.",
+          "source_field": "populate-te-rdata-revised NSDLSchemeCode"
+        },
+        {
+          "name": "scheme_name",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false,
+          "description": "The scheme name as this source prints it, kept verbatim rather than looked up against schemes.",
+          "source_field": "populate-te-rdata-revised Scheme_Name"
+        },
+        {
+          "name": "scheme_type",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Open Ended, Close Ended, or Interval Fund, as this source prints it.",
+          "source_field": "populate-te-rdata-revised SchemeType_Desc"
+        },
+        {
+          "name": "scheme_category",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false,
+          "description": "SEBI scheme category, as this source prints it.",
+          "source_field": "populate-te-rdata-revised SchemeCat_Desc"
+        },
+        {
+          "name": "ter_date",
+          "type": "DATE",
+          "nullable": false,
+          "primary_key": true,
+          "description": "The date this figure was disclosed for.",
+          "source_field": "populate-te-rdata-revised TER_Date"
+        },
+        {
+          "name": "regular_ber",
+          "type": "DOUBLE",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Base Expense Ratio, Regular plan - annualized percentage.",
+          "source_field": "populate-te-rdata-revised R_BER"
+        },
+        {
+          "name": "regular_brokerage_cost",
+          "type": "DOUBLE",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Brokerage cost, Regular plan - annualized percentage.",
+          "source_field": "populate-te-rdata-revised R_BrokerageCost"
+        },
+        {
+          "name": "regular_transaction_cost",
+          "type": "DOUBLE",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Transaction cost, Regular plan - annualized percentage.",
+          "source_field": "populate-te-rdata-revised R_TransactionCost"
+        },
+        {
+          "name": "regular_statutory_levies",
+          "type": "DOUBLE",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Statutory levies (GST etc.), Regular plan - annualized percentage.",
+          "source_field": "populate-te-rdata-revised R_StatutoryLevies"
+        },
+        {
+          "name": "regular_ter",
+          "type": "DOUBLE",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Total Expense Ratio, Regular plan - annualized percentage. The sum of regular_ber, regular_brokerage_cost, regular_transaction_cost and regular_statutory_levies.",
+          "source_field": "populate-te-rdata-revised R_TER"
+        },
+        {
+          "name": "direct_ber",
+          "type": "DOUBLE",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Base Expense Ratio, Direct plan - annualized percentage.",
+          "source_field": "populate-te-rdata-revised D_BER"
+        },
+        {
+          "name": "direct_brokerage_cost",
+          "type": "DOUBLE",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Brokerage cost, Direct plan - annualized percentage.",
+          "source_field": "populate-te-rdata-revised D_BrokerageCost"
+        },
+        {
+          "name": "direct_transaction_cost",
+          "type": "DOUBLE",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Transaction cost, Direct plan - annualized percentage.",
+          "source_field": "populate-te-rdata-revised D_TransactionCost"
+        },
+        {
+          "name": "direct_statutory_levies",
+          "type": "DOUBLE",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Statutory levies (GST etc.), Direct plan - annualized percentage.",
+          "source_field": "populate-te-rdata-revised D_StatutoryLevies"
+        },
+        {
+          "name": "direct_ter",
+          "type": "DOUBLE",
+          "nullable": false,
+          "primary_key": false,
+          "description": "Total Expense Ratio, Direct plan - annualized percentage. The sum of direct_ber, direct_brokerage_cost, direct_transaction_cost and direct_statutory_levies.",
+          "source_field": "populate-te-rdata-revised D_TER"
+        }
+      ],
+      "files": [
+        "ter/year=2026/month=08/2026-08-06.parquet",
+        "ter/year=2026/month=08/2026-08-05.parquet",
+        "ter/year=2026/month=08/2026-08-04.parquet",
+        "ter/year=2026/month=08/2026-08-03.parquet",
+        "ter/year=2026/month=08/2026-08-02.parquet",
+        "ter/year=2026/month=08/2026-08-01.parquet"
+      ],
+      "bytes": 431168,
+      "source": {
+        "name": "AMFI",
+        "url": "https://www.amfiindia.com/ter-of-mf-schemes",
+        "endpoints": [
+          "/api/populate-te-rdata-revised"
+        ]
       }
     }
   ]
