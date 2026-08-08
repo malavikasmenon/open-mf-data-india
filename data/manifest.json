@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T08:33:50.994825+00:00",
+  "generated_at": "2026-08-08T06:06:29.313357+00:00",
   "tables": [
     {
       "name": "aum",
@@ -70,7 +70,7 @@
         "scheme_code",
         "nav_date"
       ],
-      "row_count": 21612587,
+      "row_count": 21612689,
       "columns": [
         {
           "name": "date",
@@ -97,6 +97,7 @@
       ],
       "files": [
         "nav/year=2026/month=08/history.parquet",
+        "nav/year=2026/month=08/2026-08-09.parquet",
         "nav/year=2026/month=08/2026-08-04.parquet",
         "nav/year=2026/month=07/history.parquet",
         "nav/year=2026/month=06/history.parquet",
@@ -126,7 +127,7 @@
         "nav/year=2007/history.parquet",
         "nav/year=2006/history.parquet"
       ],
-      "bytes": 154110468,
+      "bytes": 154114157,
       "source": {
         "name": "mfapi",
         "url": "https://api.mfapi.in",
@@ -228,7 +229,7 @@
       "files": [
         "schemes/schemes.parquet"
       ],
-      "bytes": 437763,
+      "bytes": 437757,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/spages/NAVAll.txt"
@@ -245,7 +246,7 @@
         "nsdl_scheme_code",
         "ter_date"
       ],
-      "row_count": 9662,
+      "row_count": 11084,
       "columns": [
         {
           "name": "nsdl_scheme_code",
@@ -369,6 +370,9 @@
         }
       ],
       "files": [
+        "ter/year=2026/month=08/2026-08-09.parquet",
+        "ter/year=2026/month=08/2026-08-08.parquet",
+        "ter/year=2026/month=08/2026-08-07.parquet",
         "ter/year=2026/month=08/2026-08-06.parquet",
         "ter/year=2026/month=08/2026-08-05.parquet",
         "ter/year=2026/month=08/2026-08-04.parquet",
@@ -376,7 +380,7 @@
         "ter/year=2026/month=08/2026-08-02.parquet",
         "ter/year=2026/month=08/2026-08-01.parquet"
       ],
-      "bytes": 431168,
+      "bytes": 520310,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/ter-of-mf-schemes",
