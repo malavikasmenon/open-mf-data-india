@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-10T06:49:51.780232+00:00",
+  "generated_at": "2026-08-10T13:35:21.812484+00:00",
   "tables": [
     {
       "name": "aum",
@@ -246,7 +246,7 @@
         "nsdl_scheme_code",
         "ter_date"
       ],
-      "row_count": 12452,
+      "row_count": 13558,
       "columns": [
         {
           "name": "nsdl_scheme_code",
@@ -380,7 +380,7 @@
         "ter/year=2026/month=08/2026-08-02.parquet",
         "ter/year=2026/month=08/2026-08-01.parquet"
       ],
-      "bytes": 575927,
+      "bytes": 614605,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/ter-of-mf-schemes",
