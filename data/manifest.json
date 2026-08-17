@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T05:58:34.638008+00:00",
+  "generated_at": "2026-08-17T11:30:03.268740+00:00",
   "tables": [
     {
       "name": "aum",
@@ -234,7 +234,7 @@
       "files": [
         "schemes/schemes.parquet"
       ],
-      "bytes": 438504,
+      "bytes": 438538,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/spages/NAVAll.txt"
@@ -251,7 +251,7 @@
         "nsdl_scheme_code",
         "ter_date"
       ],
-      "row_count": 27042,
+      "row_count": 27761,
       "columns": [
         {
           "name": "nsdl_scheme_code",
@@ -392,7 +392,7 @@
         "ter/year=2026/month=08/2026-08-02.parquet",
         "ter/year=2026/month=08/2026-08-01.parquet"
       ],
-      "bytes": 1197896,
+      "bytes": 1223041,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/ter-of-mf-schemes",
