@@ -1,0 +1,78 @@
+name: NAV gap fill
+
+# Manual only — this is a recovery action for when one or more update-data
+# runs failed and left nav behind, not something a schedule should ever
+# need to reach for on its own.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  gap-fill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this data repo
+        uses: actions/checkout@v4
+        with:
+          path: store
+
+      - name: Check out the pipeline code
+        uses: actions/checkout@v4
+        with:
+          repository: malavikasmenon/india-mf-explorer-web
+          path: pipeline
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pipeline dependencies
+        run: pip install -r pipeline/requirements.txt
+
+      # Same CWD/PYTHONPATH split as update-data.yml — see that file for why.
+      - name: Fetch full history for any scheme that's fallen behind
+        working-directory: store
+        env:
+          PYTHONPATH: ${{ github.workspace }}/pipeline
+        run: python -m scripts.run_nav_gap_fill
+
+      - name: Commit and push
+        id: commit
+        working-directory: store
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "NAV gap fill: $(date -u +%Y-%m-%d)"
+            git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Unlike update-data.yml's daily nav writes, this rewrites existing
+      # nav files in place (backfill merges into whatever month/year file
+      # is already there, and compaction can rename/merge further) - so,
+      # like update-data.yml's ter handling, purge whichever nav files this
+      # run actually touched rather than assuming nothing needs it.
+      - name: Purge jsDelivr cache for the files that changed
+        if: steps.commit.outputs.pushed == 'true'
+        working-directory: store
+        run: |
+          nav_files=$(git diff --name-only HEAD~1 HEAD | grep '^data/nav/.*\.parquet$' || true)
+          paths='[
+            "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/manifest.json",
+            "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/nav.ingest.json"
+          ]'
+          if [ -n "$nav_files" ]; then
+            while IFS= read -r f; do
+              paths=$(echo "$paths" | jq --arg url "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/$f" '. + [$url]')
+            done <<< "$nav_files"
+          fi
+          curl -s -X POST https://purge.jsdelivr.net/ \
+            -H "Content-Type: application/json" \
+            -d "{\"path\": $paths}"
