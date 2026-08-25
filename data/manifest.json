@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T06:01:25.954505+00:00",
+  "generated_at": "2026-08-25T07:16:35.419291+00:00",
   "tables": [
     {
       "name": "aum",
@@ -70,7 +70,7 @@
         "scheme_code",
         "nav_date"
       ],
-      "row_count": 21665045,
+      "row_count": 21796602,
       "columns": [
         {
           "name": "date",
@@ -134,12 +134,12 @@
         "nav/year=2007/history.parquet",
         "nav/year=2006/history.parquet"
       ],
-      "bytes": 154799846,
+      "bytes": 155841866,
       "source": {
         "name": "mfapi",
         "url": "https://api.mfapi.in",
         "endpoints": [
-          "/mf/latest"
+          "/mf/{scheme_code}"
         ]
       }
     },
@@ -174,7 +174,7 @@
       "primary_key": [
         "scheme_code"
       ],
-      "row_count": 14280,
+      "row_count": 14285,
       "columns": [
         {
           "name": "scheme_code",
@@ -205,8 +205,24 @@
           "type": "VARCHAR",
           "nullable": false,
           "primary_key": false,
-          "description": "The full scheme name, exactly as published \u2014 including inconsistent spacing and casing. Plan (Direct/Regular) and option (Growth/IDCW) are buried in this string and are not yet parsed into their own columns; AMCs use no shared convention for where in the name they appear.",
+          "description": "The full scheme name, exactly as published \u2014 including inconsistent spacing and casing. Plan and option are also published as their own fields (see plan, option) but AMCs often restate them inside the name too, with no shared convention for where.",
           "source_field": "NAVAll.txt field 4"
+        },
+        {
+          "name": "plan",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false,
+          "description": "Direct or Regular. NULL where the source had '-'.",
+          "source_field": "NAVAll.txt field 5"
+        },
+        {
+          "name": "option",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false,
+          "description": "The distribution option, e.g. Growth or IDCW-Payout. NULL where the source had '-'.",
+          "source_field": "NAVAll.txt field 6"
         },
         {
           "name": "fund_house",
@@ -236,7 +252,7 @@
       "files": [
         "schemes/schemes.parquet"
       ],
-      "bytes": 438525,
+      "bytes": 308552,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/spages/NAVAll.txt"
