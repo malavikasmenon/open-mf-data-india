@@ -3,8 +3,8 @@
     "name": "mfapi",
     "url": "https://api.mfapi.in",
     "endpoints": [
-      "/mf/{scheme_code}"
+      "/mf/latest"
     ]
   },
-  "retrieved_at": "2026-08-25T07:16:25.763907+00:00"
+  "retrieved_at": "2026-08-25T07:23:15.468533+00:00"
 }
