@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T11:43:25.749743+00:00",
+  "generated_at": "2026-09-01T10:17:07.692656+00:00",
   "tables": [
     {
       "name": "aum",
@@ -70,8 +70,16 @@
         "scheme_code",
         "nav_date"
       ],
-      "row_count": 21805393,
+      "row_count": 21753116,
       "columns": [
+        {
+          "name": "scheme_code",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": true,
+          "description": "AMFI's scheme identifier, and the join key to schemes. Every value here is guaranteed to exist in schemes \u2014 the build fails rather than publish a NAV row that references a scheme the catalog does not have.",
+          "source_field": "mfapi scheme code (AMFI's own)"
+        },
         {
           "name": "date",
           "type": "DATE",
@@ -85,32 +93,10 @@
           "primary_key": false,
           "description": "Net asset value per unit, in rupees. Total-return by construction \u2014 it absorbs distributions \u2014 so the ratio of two NAVs is the return between those dates, with no dividend adjustment needed. NULL where the source published a value that could not be read as a number; the row is kept so that fact stays visible.",
           "source_field": "mfapi data[].nav"
-        },
-        {
-          "name": "scheme_code",
-          "type": "VARCHAR",
-          "nullable": false,
-          "primary_key": true,
-          "description": "AMFI's scheme identifier, and the join key to schemes. Every value here is guaranteed to exist in schemes \u2014 the build fails rather than publish a NAV row that references a scheme the catalog does not have.",
-          "source_field": "mfapi scheme code (AMFI's own)"
         }
       ],
       "files": [
         "nav/year=2026/month=08/history.parquet",
-        "nav/year=2026/month=08/2026-08-30.parquet",
-        "nav/year=2026/month=08/2026-08-28.parquet",
-        "nav/year=2026/month=08/2026-08-27.parquet",
-        "nav/year=2026/month=08/2026-08-26.parquet",
-        "nav/year=2026/month=08/2026-08-24.parquet",
-        "nav/year=2026/month=08/2026-08-18.parquet",
-        "nav/year=2026/month=08/2026-08-17.parquet",
-        "nav/year=2026/month=08/2026-08-16.parquet",
-        "nav/year=2026/month=08/2026-08-13.parquet",
-        "nav/year=2026/month=08/2026-08-12.parquet",
-        "nav/year=2026/month=08/2026-08-11.parquet",
-        "nav/year=2026/month=08/2026-08-10.parquet",
-        "nav/year=2026/month=08/2026-08-09.parquet",
-        "nav/year=2026/month=08/2026-08-04.parquet",
         "nav/year=2026/month=07/history.parquet",
         "nav/year=2026/month=06/history.parquet",
         "nav/year=2026/month=05/history.parquet",
@@ -139,7 +125,7 @@
         "nav/year=2007/history.parquet",
         "nav/year=2006/history.parquet"
       ],
-      "bytes": 155964553,
+      "bytes": 155245999,
       "source": {
         "name": "mfapi",
         "url": "https://api.mfapi.in",
@@ -179,7 +165,7 @@
       "primary_key": [
         "scheme_code"
       ],
-      "row_count": 14308,
+      "row_count": 14314,
       "columns": [
         {
           "name": "scheme_code",
@@ -257,7 +243,7 @@
       "files": [
         "schemes/schemes.parquet"
       ],
-      "bytes": 309198,
+      "bytes": 309428,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/spages/NAVAll.txt"
@@ -398,38 +384,9 @@
         }
       ],
       "files": [
-        "ter/year=2026/month=08/2026-08-30.parquet",
-        "ter/year=2026/month=08/2026-08-29.parquet",
-        "ter/year=2026/month=08/2026-08-28.parquet",
-        "ter/year=2026/month=08/2026-08-27.parquet",
-        "ter/year=2026/month=08/2026-08-26.parquet",
-        "ter/year=2026/month=08/2026-08-25.parquet",
-        "ter/year=2026/month=08/2026-08-24.parquet",
-        "ter/year=2026/month=08/2026-08-23.parquet",
-        "ter/year=2026/month=08/2026-08-22.parquet",
-        "ter/year=2026/month=08/2026-08-21.parquet",
-        "ter/year=2026/month=08/2026-08-20.parquet",
-        "ter/year=2026/month=08/2026-08-19.parquet",
-        "ter/year=2026/month=08/2026-08-18.parquet",
-        "ter/year=2026/month=08/2026-08-17.parquet",
-        "ter/year=2026/month=08/2026-08-16.parquet",
-        "ter/year=2026/month=08/2026-08-15.parquet",
-        "ter/year=2026/month=08/2026-08-14.parquet",
-        "ter/year=2026/month=08/2026-08-13.parquet",
-        "ter/year=2026/month=08/2026-08-12.parquet",
-        "ter/year=2026/month=08/2026-08-11.parquet",
-        "ter/year=2026/month=08/2026-08-10.parquet",
-        "ter/year=2026/month=08/2026-08-09.parquet",
-        "ter/year=2026/month=08/2026-08-08.parquet",
-        "ter/year=2026/month=08/2026-08-07.parquet",
-        "ter/year=2026/month=08/2026-08-06.parquet",
-        "ter/year=2026/month=08/2026-08-05.parquet",
-        "ter/year=2026/month=08/2026-08-04.parquet",
-        "ter/year=2026/month=08/2026-08-03.parquet",
-        "ter/year=2026/month=08/2026-08-02.parquet",
-        "ter/year=2026/month=08/2026-08-01.parquet"
+        "ter/year=2026/month=08/history.parquet"
       ],
-      "bytes": 2614098,
+      "bytes": 349103,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/ter-of-mf-schemes",
