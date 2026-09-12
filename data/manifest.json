@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T09:59:11.662124+00:00",
+  "generated_at": "2026-09-12T09:34:48.901415+00:00",
   "tables": [
     {
       "name": "aum",
@@ -70,7 +70,7 @@
         "scheme_code",
         "nav_date"
       ],
-      "row_count": 21814463,
+      "row_count": 21814775,
       "columns": [
         {
           "name": "scheme_code",
@@ -96,6 +96,7 @@
         }
       ],
       "files": [
+        "nav/year=2026/month=09/2026-09-14.parquet",
         "nav/year=2026/month=09/2026-09-10.parquet",
         "nav/year=2026/month=09/2026-09-09.parquet",
         "nav/year=2026/month=09/2026-09-08.parquet",
@@ -133,7 +134,7 @@
         "nav/year=2007/history.parquet",
         "nav/year=2006/history.parquet"
       ],
-      "bytes": 156042919,
+      "bytes": 156049636,
       "source": {
         "name": "mfapi",
         "url": "https://api.mfapi.in",
@@ -251,7 +252,7 @@
       "files": [
         "schemes/schemes.parquet"
       ],
-      "bytes": 310742,
+      "bytes": 310811,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/spages/NAVAll.txt"
@@ -268,7 +269,7 @@
         "nsdl_scheme_code",
         "ter_date"
       ],
-      "row_count": 77306,
+      "row_count": 79708,
       "columns": [
         {
           "name": "nsdl_scheme_code",
@@ -392,6 +393,10 @@
         }
       ],
       "files": [
+        "ter/year=2026/month=09/2026-09-14.parquet",
+        "ter/year=2026/month=09/2026-09-13.parquet",
+        "ter/year=2026/month=09/2026-09-12.parquet",
+        "ter/year=2026/month=09/2026-09-11.parquet",
         "ter/year=2026/month=09/2026-09-10.parquet",
         "ter/year=2026/month=09/2026-09-09.parquet",
         "ter/year=2026/month=09/2026-09-08.parquet",
@@ -404,7 +409,7 @@
         "ter/year=2026/month=09/2026-09-01.parquet",
         "ter/year=2026/month=08/history.parquet"
       ],
-      "bytes": 1241096,
+      "bytes": 1385079,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/ter-of-mf-schemes",
