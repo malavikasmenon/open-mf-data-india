@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T10:19:06.392730+00:00",
+  "generated_at": "2026-09-17T10:21:58.891386+00:00",
   "tables": [
     {
       "name": "aum",
@@ -70,7 +70,7 @@
         "scheme_code",
         "nav_date"
       ],
-      "row_count": 21823849,
+      "row_count": 21832539,
       "columns": [
         {
           "name": "scheme_code",
@@ -96,6 +96,7 @@
         }
       ],
       "files": [
+        "nav/year=2026/month=09/2026-09-16.parquet",
         "nav/year=2026/month=09/2026-09-15.parquet",
         "nav/year=2026/month=09/2026-09-14.parquet",
         "nav/year=2026/month=09/2026-09-10.parquet",
@@ -135,7 +136,7 @@
         "nav/year=2007/history.parquet",
         "nav/year=2006/history.parquet"
       ],
-      "bytes": 156167519,
+      "bytes": 156279957,
       "source": {
         "name": "mfapi",
         "url": "https://api.mfapi.in",
@@ -175,7 +176,7 @@
       "primary_key": [
         "scheme_code"
       ],
-      "row_count": 14361,
+      "row_count": 14371,
       "columns": [
         {
           "name": "scheme_code",
@@ -253,7 +254,7 @@
       "files": [
         "schemes/schemes.parquet"
       ],
-      "bytes": 311230,
+      "bytes": 311476,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/spages/NAVAll.txt"
@@ -270,7 +271,7 @@
         "nsdl_scheme_code",
         "ter_date"
       ],
-      "row_count": 87167,
+      "row_count": 89997,
       "columns": [
         {
           "name": "nsdl_scheme_code",
@@ -394,6 +395,7 @@
         }
       ],
       "files": [
+        "ter/year=2026/month=09/2026-09-16.parquet",
         "ter/year=2026/month=09/2026-09-15.parquet",
         "ter/year=2026/month=09/2026-09-14.parquet",
         "ter/year=2026/month=09/2026-09-13.parquet",
@@ -411,7 +413,7 @@
         "ter/year=2026/month=09/2026-09-01.parquet",
         "ter/year=2026/month=08/history.parquet"
       ],
-      "bytes": 1699008,
+      "bytes": 1813291,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/ter-of-mf-schemes",
