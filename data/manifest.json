@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T11:51:40.853877+00:00",
+  "generated_at": "2026-10-01T11:43:07.330580+00:00",
   "tables": [
     {
       "name": "aum",
@@ -70,7 +70,7 @@
         "scheme_code",
         "nav_date"
       ],
-      "row_count": 21868796,
+      "row_count": 21877521,
       "columns": [
         {
           "name": "scheme_code",
@@ -96,23 +96,7 @@
         }
       ],
       "files": [
-        "nav/year=2026/month=09/2026-09-29.parquet",
-        "nav/year=2026/month=09/2026-09-28.parquet",
-        "nav/year=2026/month=09/2026-09-27.parquet",
-        "nav/year=2026/month=09/2026-09-24.parquet",
-        "nav/year=2026/month=09/2026-09-20.parquet",
-        "nav/year=2026/month=09/2026-09-17.parquet",
-        "nav/year=2026/month=09/2026-09-16.parquet",
-        "nav/year=2026/month=09/2026-09-15.parquet",
-        "nav/year=2026/month=09/2026-09-14.parquet",
-        "nav/year=2026/month=09/2026-09-10.parquet",
-        "nav/year=2026/month=09/2026-09-09.parquet",
-        "nav/year=2026/month=09/2026-09-08.parquet",
-        "nav/year=2026/month=09/2026-09-07.parquet",
-        "nav/year=2026/month=09/2026-09-06.parquet",
-        "nav/year=2026/month=09/2026-09-03.parquet",
-        "nav/year=2026/month=09/2026-09-02.parquet",
-        "nav/year=2026/month=09/2026-09-01.parquet",
+        "nav/year=2026/month=09/history.parquet",
         "nav/year=2026/month=08/history.parquet",
         "nav/year=2026/month=07/history.parquet",
         "nav/year=2026/month=06/history.parquet",
@@ -142,7 +126,7 @@
         "nav/year=2007/history.parquet",
         "nav/year=2006/history.parquet"
       ],
-      "bytes": 156754293,
+      "bytes": 156296003,
       "source": {
         "name": "mfapi",
         "url": "https://api.mfapi.in",
@@ -182,7 +166,7 @@
       "primary_key": [
         "scheme_code"
       ],
-      "row_count": 14406,
+      "row_count": 14361,
       "columns": [
         {
           "name": "scheme_code",
@@ -260,7 +244,7 @@
       "files": [
         "schemes/schemes.parquet"
       ],
-      "bytes": 312278,
+      "bytes": 311091,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/spages/NAVAll.txt"
@@ -401,38 +385,10 @@
         }
       ],
       "files": [
-        "ter/year=2026/month=09/2026-09-29.parquet",
-        "ter/year=2026/month=09/2026-09-28.parquet",
-        "ter/year=2026/month=09/2026-09-27.parquet",
-        "ter/year=2026/month=09/2026-09-26.parquet",
-        "ter/year=2026/month=09/2026-09-25.parquet",
-        "ter/year=2026/month=09/2026-09-24.parquet",
-        "ter/year=2026/month=09/2026-09-23.parquet",
-        "ter/year=2026/month=09/2026-09-22.parquet",
-        "ter/year=2026/month=09/2026-09-21.parquet",
-        "ter/year=2026/month=09/2026-09-20.parquet",
-        "ter/year=2026/month=09/2026-09-19.parquet",
-        "ter/year=2026/month=09/2026-09-18.parquet",
-        "ter/year=2026/month=09/2026-09-17.parquet",
-        "ter/year=2026/month=09/2026-09-16.parquet",
-        "ter/year=2026/month=09/2026-09-15.parquet",
-        "ter/year=2026/month=09/2026-09-14.parquet",
-        "ter/year=2026/month=09/2026-09-13.parquet",
-        "ter/year=2026/month=09/2026-09-12.parquet",
-        "ter/year=2026/month=09/2026-09-11.parquet",
-        "ter/year=2026/month=09/2026-09-10.parquet",
-        "ter/year=2026/month=09/2026-09-09.parquet",
-        "ter/year=2026/month=09/2026-09-08.parquet",
-        "ter/year=2026/month=09/2026-09-07.parquet",
-        "ter/year=2026/month=09/2026-09-06.parquet",
-        "ter/year=2026/month=09/2026-09-05.parquet",
-        "ter/year=2026/month=09/2026-09-04.parquet",
-        "ter/year=2026/month=09/2026-09-03.parquet",
-        "ter/year=2026/month=09/2026-09-02.parquet",
-        "ter/year=2026/month=09/2026-09-01.parquet",
+        "ter/year=2026/month=09/history.parquet",
         "ter/year=2026/month=08/history.parquet"
       ],
-      "bytes": 3011328,
+      "bytes": 660374,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/ter-of-mf-schemes",
