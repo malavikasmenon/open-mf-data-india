@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-03T10:31:00.207455+00:00",
+  "generated_at": "2026-10-04T11:12:27.161900+00:00",
   "tables": [
     {
       "name": "aum",
@@ -70,7 +70,7 @@
         "scheme_code",
         "nav_date"
       ],
-      "row_count": 21877998,
+      "row_count": 21878229,
       "columns": [
         {
           "name": "scheme_code",
@@ -127,7 +127,7 @@
         "nav/year=2007/history.parquet",
         "nav/year=2006/history.parquet"
       ],
-      "bytes": 156304949,
+      "bytes": 156308405,
       "source": {
         "name": "mfapi",
         "url": "https://api.mfapi.in",
@@ -262,7 +262,7 @@
         "nsdl_scheme_code",
         "ter_date"
       ],
-      "row_count": 119057,
+      "row_count": 119435,
       "columns": [
         {
           "name": "nsdl_scheme_code",
@@ -393,7 +393,7 @@
         "ter/year=2026/month=09/history.parquet",
         "ter/year=2026/month=08/history.parquet"
       ],
-      "bytes": 811833,
+      "bytes": 825875,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/ter-of-mf-schemes",
