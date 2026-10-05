@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T11:12:27.161900+00:00",
+  "generated_at": "2026-10-05T12:26:48.511552+00:00",
   "tables": [
     {
       "name": "aum",
@@ -12,7 +12,7 @@
         "scheme_code",
         "period"
       ],
-      "row_count": 8545,
+      "row_count": 15862,
       "columns": [
         {
           "name": "scheme_code",
@@ -48,9 +48,10 @@
         }
       ],
       "files": [
+        "aum/year=2026/2026-07.parquet",
         "aum/year=2026/2026-04.parquet"
       ],
-      "bytes": 117360,
+      "bytes": 218021,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/aum-data/average-aum",
