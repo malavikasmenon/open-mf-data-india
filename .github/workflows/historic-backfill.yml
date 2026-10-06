@@ -69,3 +69,22 @@ jobs:
                 "https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/nav.ingest.json"
               ]
             }'
+
+      # Point the web app at the commit just pushed. The app loads
+      # latest.json from @main, then fetches the manifest and every file
+      # from @<this commit>. Files at a commit never change, so the manifest
+      # and the files it lists always match. If this purge is slow or fails,
+      # the app just shows the previous snapshot; it doesn't break.
+      - name: Publish latest.json pointer
+        if: steps.commit.outputs.pushed == 'true'
+        working-directory: store
+        run: |
+          sha=$(git rev-parse HEAD)
+          printf '{"commit": "%s"}\n' "$sha" > data/latest.json
+          git add data/latest.json
+          git commit -m "Point latest.json at ${sha:0:7}"
+          git push
+          curl -sf -X POST https://purge.jsdelivr.net/ \
+            -H "Content-Type: application/json" \
+            -d '{"path": ["https://cdn.jsdelivr.net/gh/malavikasmenon/open-mf-data-india@main/data/latest.json"]}' \
+            || echo "::warning::jsDelivr purge of latest.json failed"
