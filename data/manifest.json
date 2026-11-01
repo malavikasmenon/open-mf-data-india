@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T11:51:12.256447+00:00",
+  "generated_at": "2026-11-01T11:56:16.395011+00:00",
   "tables": [
     {
       "name": "aum",
@@ -71,7 +71,7 @@
         "scheme_code",
         "nav_date"
       ],
-      "row_count": 21968237,
+      "row_count": 21968939,
       "columns": [
         {
           "name": "scheme_code",
@@ -97,21 +97,8 @@
         }
       ],
       "files": [
-        "nav/year=2026/month=10/2026-10-27.parquet",
-        "nav/year=2026/month=10/2026-10-25.parquet",
-        "nav/year=2026/month=10/2026-10-22.parquet",
-        "nav/year=2026/month=10/2026-10-20.parquet",
-        "nav/year=2026/month=10/2026-10-18.parquet",
-        "nav/year=2026/month=10/2026-10-15.parquet",
-        "nav/year=2026/month=10/2026-10-14.parquet",
-        "nav/year=2026/month=10/2026-10-13.parquet",
-        "nav/year=2026/month=10/2026-10-12.parquet",
-        "nav/year=2026/month=10/2026-10-11.parquet",
-        "nav/year=2026/month=10/2026-10-08.parquet",
-        "nav/year=2026/month=10/2026-10-07.parquet",
-        "nav/year=2026/month=10/2026-10-06.parquet",
-        "nav/year=2026/month=10/2026-10-05.parquet",
-        "nav/year=2026/month=10/2026-10-04.parquet",
+        "nav/year=2026/month=11/2026-11-01.parquet",
+        "nav/year=2026/month=10/history.parquet",
         "nav/year=2026/month=09/history.parquet",
         "nav/year=2026/month=08/history.parquet",
         "nav/year=2026/month=07/history.parquet",
@@ -142,7 +129,7 @@
         "nav/year=2007/history.parquet",
         "nav/year=2006/history.parquet"
       ],
-      "bytes": 157484111,
+      "bytes": 157103046,
       "source": {
         "name": "mfapi",
         "url": "https://api.mfapi.in",
@@ -182,7 +169,7 @@
       "primary_key": [
         "scheme_code"
       ],
-      "row_count": 14414,
+      "row_count": 14441,
       "columns": [
         {
           "name": "scheme_code",
@@ -260,7 +247,7 @@
       "files": [
         "schemes/schemes.parquet"
       ],
-      "bytes": 312217,
+      "bytes": 312909,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/spages/NAVAll.txt"
@@ -277,7 +264,7 @@
         "nsdl_scheme_code",
         "ter_date"
       ],
-      "row_count": 170006,
+      "row_count": 170367,
       "columns": [
         {
           "name": "nsdl_scheme_code",
@@ -401,37 +388,12 @@
         }
       ],
       "files": [
-        "ter/year=2026/month=10/2026-10-27.parquet",
-        "ter/year=2026/month=10/2026-10-26.parquet",
-        "ter/year=2026/month=10/2026-10-25.parquet",
-        "ter/year=2026/month=10/2026-10-24.parquet",
-        "ter/year=2026/month=10/2026-10-23.parquet",
-        "ter/year=2026/month=10/2026-10-22.parquet",
-        "ter/year=2026/month=10/2026-10-21.parquet",
-        "ter/year=2026/month=10/2026-10-20.parquet",
-        "ter/year=2026/month=10/2026-10-19.parquet",
-        "ter/year=2026/month=10/2026-10-18.parquet",
-        "ter/year=2026/month=10/2026-10-17.parquet",
-        "ter/year=2026/month=10/2026-10-16.parquet",
-        "ter/year=2026/month=10/2026-10-15.parquet",
-        "ter/year=2026/month=10/2026-10-14.parquet",
-        "ter/year=2026/month=10/2026-10-13.parquet",
-        "ter/year=2026/month=10/2026-10-12.parquet",
-        "ter/year=2026/month=10/2026-10-11.parquet",
-        "ter/year=2026/month=10/2026-10-10.parquet",
-        "ter/year=2026/month=10/2026-10-09.parquet",
-        "ter/year=2026/month=10/2026-10-08.parquet",
-        "ter/year=2026/month=10/2026-10-07.parquet",
-        "ter/year=2026/month=10/2026-10-06.parquet",
-        "ter/year=2026/month=10/2026-10-05.parquet",
-        "ter/year=2026/month=10/2026-10-04.parquet",
-        "ter/year=2026/month=10/2026-10-03.parquet",
-        "ter/year=2026/month=10/2026-10-02.parquet",
-        "ter/year=2026/month=10/2026-10-01.parquet",
+        "ter/year=2026/month=11/2026-11-01.parquet",
+        "ter/year=2026/month=10/history.parquet",
         "ter/year=2026/month=09/history.parquet",
         "ter/year=2026/month=08/history.parquet"
       ],
-      "bytes": 3109464,
+      "bytes": 1080520,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/ter-of-mf-schemes",
