@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T11:56:16.395011+00:00",
+  "generated_at": "2026-11-02T13:42:47.649487+00:00",
   "tables": [
     {
       "name": "aum",
@@ -51,7 +51,7 @@
         "aum/year=2026/2026-07.parquet",
         "aum/year=2026/2026-04.parquet"
       ],
-      "bytes": 235866,
+      "bytes": 235884,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/aum-data/average-aum",
