@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T15:49:39.736354+00:00",
+  "generated_at": "2026-11-27T15:43:29.862724+00:00",
   "tables": [
     {
       "name": "aum",
@@ -71,7 +71,7 @@
         "scheme_code",
         "nav_date"
       ],
-      "row_count": 22041342,
+      "row_count": 22050047,
       "columns": [
         {
           "name": "scheme_code",
@@ -97,6 +97,7 @@
         }
       ],
       "files": [
+        "nav/year=2026/month=11/2026-11-26.parquet",
         "nav/year=2026/month=11/2026-11-25.parquet",
         "nav/year=2026/month=11/2026-11-18.parquet",
         "nav/year=2026/month=11/2026-11-17.parquet",
@@ -140,7 +141,7 @@
         "nav/year=2007/history.parquet",
         "nav/year=2006/history.parquet"
       ],
-      "bytes": 158047005,
+      "bytes": 158159513,
       "source": {
         "name": "mfapi",
         "url": "https://api.mfapi.in",
@@ -180,7 +181,7 @@
       "primary_key": [
         "scheme_code"
       ],
-      "row_count": 14481,
+      "row_count": 14486,
       "columns": [
         {
           "name": "scheme_code",
@@ -258,7 +259,7 @@
       "files": [
         "schemes/schemes.parquet"
       ],
-      "bytes": 313611,
+      "bytes": 313744,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/spages/NAVAll.txt"
@@ -275,7 +276,7 @@
         "nsdl_scheme_code",
         "ter_date"
       ],
-      "row_count": 222162,
+      "row_count": 223978,
       "columns": [
         {
           "name": "nsdl_scheme_code",
@@ -399,6 +400,9 @@
         }
       ],
       "files": [
+        "ter/year=2026/month=11/2026-11-29.parquet",
+        "ter/year=2026/month=11/2026-11-28.parquet",
+        "ter/year=2026/month=11/2026-11-27.parquet",
         "ter/year=2026/month=11/2026-11-26.parquet",
         "ter/year=2026/month=11/2026-11-25.parquet",
         "ter/year=2026/month=11/2026-11-24.parquet",
@@ -429,7 +433,7 @@
         "ter/year=2026/month=09/history.parquet",
         "ter/year=2026/month=08/history.parquet"
       ],
-      "bytes": 3423474,
+      "bytes": 3521952,
       "source": {
         "name": "AMFI",
         "url": "https://www.amfiindia.com/ter-of-mf-schemes",
